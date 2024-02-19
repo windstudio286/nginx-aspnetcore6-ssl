@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  nginx.api:
+    build:
+      context:  ./NginxDocker.Api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      
+  nginx.proxy:
+    build:
+      context:  ./NginxProxy
+      dockerfile: Dockerfile
+    ports:
+      - "8084:80"

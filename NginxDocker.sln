@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NginxDocker.Api", "NginxDocker.Api\NginxDocker.Api.csproj", "{6EC63C6D-F4B0-45D2-AAD5-6BA89763CF00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EC63C6D-F4B0-45D2-AAD5-6BA89763CF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC63C6D-F4B0-45D2-AAD5-6BA89763CF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC63C6D-F4B0-45D2-AAD5-6BA89763CF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC63C6D-F4B0-45D2-AAD5-6BA89763CF00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BCE2DFF-1EE8-4A58-BB5C-C211A06BDC38}
+	EndGlobalSection
+EndGlobal

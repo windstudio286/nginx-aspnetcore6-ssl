@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+
+  nginx.api:
+    build:
+      context:  ./NginxDocker.Api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      
+  nginx.proxy:
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - ./NginxProxy/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes: 
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email ttcong194@gmail.com -d weplaywefun.online --agree-tos
