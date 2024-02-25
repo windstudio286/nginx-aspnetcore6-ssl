@@ -2,11 +2,24 @@ version: '3.7'
 
 services:
 
+  nginx.api_db:
+    image: postgres:latest
+    container_name: app_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5433:5432"
+    restart: always
+    volumes:
+      - ./data_db:/var/lib/postgresql/data
   nginx.api:
     build:
       context:  ./NginxDocker.Api
       dockerfile: Dockerfile
     environment:
+      - ConnectionStrings__WebApiDatabase=Host=nginx.api_db;Database=postgres;Username=postgres;Password=postgres;Port=5432;Integrated Security=true;Pooling=true;
       - ASPNETCORE_ENVIRONMENT=Development
       
   nginx.proxy:
