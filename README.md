@@ -12,7 +12,7 @@ Vào docker của nginx để reload lại config
 
 **docker exec -it <container_id> bash**
 Sau đó test nginx và reload config bằng câu lệnh
-**nginx -t
-nginx -s reload**
+**nginx -t**
+**nginx -s reload**
 Nếu ko được thì restart lại docker nginx.proxy
 **docker compose up -d nginx.proxy**
