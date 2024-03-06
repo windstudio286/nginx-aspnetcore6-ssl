@@ -2,10 +2,14 @@
 
 namespace NginxDocker.Api.Controllers;
 
+using System;
+using System.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using NginxDocker.Api.Models;
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class ProductController : ControllerBase
 {
 
@@ -92,6 +96,22 @@ public class ProductController : ControllerBase
         await _dBcontext.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpPost]
+    [Route("AddProduct")]
+    [AllowAnonymous]
+    public async Task<IActionResult> AddProduct()
+    {
+
+        var user_name = "congtt"; // Example user ID
+        var user_password = "23071958"; // Example user name
+        var userRecord = _dBcontext.Users.FromSqlRaw("SELECT * FROM create_or_get_user({0}, {1}) as (user_id int,user_name varchar,password varchar,refresh_token varchar,refresh_token_expiry_time timestamp)", user_name, user_password).FirstOrDefault();
+        if (userRecord != null)
+        {
+            Console.WriteLine($"ID: {userRecord.UserId}, Name: {userRecord.Username}");
+        }
+        return Ok(userRecord);
     }
 }
 
